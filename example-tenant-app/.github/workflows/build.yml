@@ -1,0 +1,17 @@
+name: Build Image
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  build:
+    uses: YOUR_ORG/platform-pipelines/.github/workflows/container-build.yml@v0
+    with:
+      image_name: YOUR_ORG/example-tenant-app
+      context: .
+      # platforms: linux/amd64,linux/arm64
+      push: ${{ github.event_name != 'pull_request' }}
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

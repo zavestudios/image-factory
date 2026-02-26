@@ -1,0 +1,21 @@
+name: Promote Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      digest:
+        description: "Digest sha256:..."
+        required: true
+      environment:
+        description: "Environment tag (dev|staging|prod)"
+        required: true
+
+jobs:
+  promote:
+    uses: YOUR_ORG/platform-pipelines/.github/workflows/container-promote.yml@v0
+    with:
+      image: ghcr.io/YOUR_ORG/example-tenant-app
+      digest: ${{ inputs.digest }}
+      environment: ${{ inputs.environment }}
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
