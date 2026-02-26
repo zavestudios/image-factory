@@ -1,0 +1,47 @@
+# Session context files (local-only)
+AGENTS.md
+CLAUDE.md
+
+# macOS / OS noise
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs / temp
+*.log
+*.tmp
+*.bak
+.tmp/
+.cache/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node / JS
+node_modules/
+.npm/
+.pnpm-store/
+
+# Ruby / Bundler
+.bundle/
+vendor/bundle/
+
+# Containers
+.docker/
