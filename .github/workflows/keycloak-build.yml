@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    uses: zavestudios/platform-pipelines/.github/workflows/container-build.yml@v0
+    uses: zavestudios/platform-pipelines/.github/workflows/container-build.yml@c0aa80bb405fa24ede5ebcf1c40b0be90328386c
     with:
       image_name: zavestudios/keycloak
       context: .
@@ -21,4 +21,3 @@ jobs:
       push: ${{ github.event_name != 'pull_request' }}
     secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
