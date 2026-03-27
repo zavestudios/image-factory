@@ -5,10 +5,12 @@ on:
     branches: ["main"]
     paths:
       - "keycloak/**"
+      - ".trivyignore"
       - ".github/workflows/keycloak-build.yml"
   pull_request:
     paths:
       - "keycloak/**"
+      - ".trivyignore"
       - ".github/workflows/keycloak-build.yml"
 
 permissions:
