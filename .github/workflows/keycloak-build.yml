@@ -11,6 +11,11 @@ on:
       - "keycloak/**"
       - ".github/workflows/keycloak-build.yml"
 
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+
 jobs:
   build:
     uses: zavestudios/platform-pipelines/.github/workflows/container-build.yml@c0aa80bb405fa24ede5ebcf1c40b0be90328386c
