@@ -1,0 +1,19 @@
+# Keycloak image exceptions
+#
+# Policy basis:
+# - Block HIGH/CRITICAL findings that have a fixed version
+# - Allow explicit exceptions when the reported fix path is not actionable for
+#   the consumed upstream image or appears to be scanner/version-range noise
+#
+# These exceptions are intentionally narrow and should be revisited whenever the
+# base Keycloak image or bundled dependencies change.
+
+# Reported against jackson-core 2.19.2 with inconsistent fixed-version guidance
+# (includes 2.18.6 as "fixed"), indicating scanner advisory ambiguity rather
+# than a clear actionable upgrade path inside the upstream Keycloak bundle.
+GHSA-72hv-8253-57qq
+
+# Reported against bundled mssql-jdbc 13.2.1 with a non-actionable fixed list
+# for this upstream image context. The deployment uses PostgreSQL, not SQL
+# Server, so this remains documented but excepted from the blocking gate.
+CVE-2025-59250
