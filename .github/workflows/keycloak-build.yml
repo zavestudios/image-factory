@@ -1,0 +1,24 @@
+name: Build Keycloak Image
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "keycloak/**"
+      - ".github/workflows/keycloak-build.yml"
+  pull_request:
+    paths:
+      - "keycloak/**"
+      - ".github/workflows/keycloak-build.yml"
+
+jobs:
+  build:
+    uses: zavestudios/platform-pipelines/.github/workflows/container-build.yml@v0
+    with:
+      image_name: zavestudios/keycloak
+      context: .
+      dockerfile: keycloak/Dockerfile
+      push: ${{ github.event_name != 'pull_request' }}
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

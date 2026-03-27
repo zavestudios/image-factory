@@ -1,0 +1,21 @@
+name: Promote Keycloak Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      digest:
+        description: "Digest sha256:..."
+        required: true
+      environment:
+        description: "Environment tag (use bootstrap for gitops consumption)"
+        required: true
+
+jobs:
+  promote:
+    uses: zavestudios/platform-pipelines/.github/workflows/container-promote.yml@v0
+    with:
+      image: ghcr.io/zavestudios/keycloak
+      digest: ${{ inputs.digest }}
+      environment: ${{ inputs.environment }}
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
